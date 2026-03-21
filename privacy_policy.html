@@ -50,9 +50,7 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
-        h1,
-        h2,
-        h3 {
+        h1, h2 {
             color: var(--text-main);
             margin-top: 1.5em;
         }
@@ -71,6 +69,11 @@
 
         ul {
             color: var(--text-muted);
+            padding-left: 1.5em;
+        }
+
+        li {
+            margin-bottom: 0.5em;
         }
 
         a {
@@ -92,6 +95,14 @@
 
         .contact-box a {
             font-weight: bold;
+        }
+
+        .info-box {
+            background: #fff8f0;
+            padding: 20px;
+            border-left: 4px solid var(--secondary);
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
         }
 
         .nav-link {
@@ -131,50 +142,87 @@
         <img src="ic_launcher.png" alt="JAPA Sadhna Counter Logo" class="logo">
         <h1>Privacy Policy</h1>
         <p style="color: rgba(255,255,255,0.9); font-size: 1.2em;">JAPA Sadhna Counter</p>
-        <a href="terms_and_conditions.html" class="nav-link">View Terms & Conditions</a>
+        <a href="terms_and_conditions.html" class="nav-link">View Terms &amp; Conditions</a>
     </div>
 
     <div class="container">
         <p><strong>Last Updated:</strong> March 2026</p>
 
         <h2>1. Introduction</h2>
-        <p>Welcome to <strong>JAPA Sadhna Counter</strong>. We respect your privacy and are committed to protecting your
-            personal data. This Privacy Policy will inform you about how we handle your information when you use our
-            mobile application and outline your privacy rights.</p>
+        <p>Welcome to <strong>JAPA Sadhna Counter</strong>. We respect your privacy and are committed to protecting
+            your personal data. This Privacy Policy explains what data the app stores, how it is handled, and how
+            you can delete it at any time.</p>
 
-        <h2>2. Data Collection & Usage</h2>
-        <p>Our app, JAPA Sadhna Counter, is designed to be a personal, distraction-free tool for your spiritual
-            practice. <strong>We do not collect, transmit, or store any personal data on external servers.</strong> Your
-            counter data, preferences, and application settings are stored locally on your device.</p>
+        <h2>2. Data We Store</h2>
+        <p>JAPA Sadhna Counter <strong>does not collect, transmit, or share any personal data</strong> with us or
+            any third party. The only data the app stores is:</p>
+        <ul>
+            <li><strong>Japa count</strong> — the number of mantra repetitions you complete.</li>
+            <li><strong>Mala count</strong> — the number of malas (rounds) you complete.</li>
+        </ul>
+        <p>This data is saved <strong>locally on your device only</strong>, used solely to display your personal
+            spiritual practice progress. It is never uploaded to any server, cloud, or external service.</p>
 
-        <h2>3. Local Storage</h2>
-        <p>We use local device storage mechanisms to save your daily progress, japa counts, and customized
-            configurations. This information remains strictly on your device and is not accessible by us or any third
-            parties.</p>
+        <h2>3. Health &amp; Wellness Clarification</h2>
+        <div class="info-box">
+            <p>JAPA Sadhna Counter is a <strong>spiritual practice counter app</strong>. While regular japa and
+                meditation practice may naturally support general mental and spiritual well-being, this app
+                <strong>does not collect, access, read, or write any health or medical data</strong> of any kind.</p>
+            <p>Specifically, the app does <strong>not</strong>:</p>
+            <ul>
+                <li>Access or connect to Google Fit, Apple Health, or any health platform.</li>
+                <li>Track any physical health metrics such as heart rate, steps, sleep, or calories.</li>
+                <li>Collect or store any medical, biometric, or sensitive personal information.</li>
+                <li>Use your japa or mala counts for any health-related profiling or analysis.</li>
+            </ul>
+        </div>
 
-        <h2>4. Internet Permissions & Analytics</h2>
-        <p>The app may require standard internet permissions for non-intrusive operations, such as linking out to
-            external resources or crash analytics (to help us identify bugs and improve the app). No personally
-            identifiable information (PII) is linked to these activities.</p>
+        <h2>4. Local Storage</h2>
+        <p>Your japa count and mala count are stored using your device's local storage. This means:</p>
+        <ul>
+            <li>The data exists only on your device.</li>
+            <li>We have no access to it whatsoever.</li>
+            <li>No third party has access to it.</li>
+            <li>It is not backed up to any cloud by this app.</li>
+        </ul>
 
-        <h2>5. Children's Privacy</h2>
-        <p>These Services do not address anyone under the age of 13. We do not knowingly collect personally identifiable
+        <h2>5. Data Retention &amp; Deletion</h2>
+        <p><strong>How long is data kept?</strong> Your japa and mala count data is retained locally on your device
+            for as long as the app remains installed. We hold no copies on any server — there is nothing to expire
+            or delete on our end.</p>
+        <p><strong>How to delete your data:</strong> You have full control over your data at all times. You can
+            permanently delete it using any of the following methods:</p>
+        <ul>
+            <li><strong>In-app reset:</strong> Use the reset or clear option in the app's settings to instantly
+                wipe all saved counts and history.</li>
+            <li><strong>Device settings:</strong> Go to Settings → Apps → JAPA Sadhna Counter → Storage →
+                Clear Data.</li>
+            <li><strong>Uninstall the app:</strong> Uninstalling the app permanently removes all locally stored
+                data from your device.</li>
+        </ul>
+        <p>Because all data is stored locally, deletion is instant and permanent. No request to us is required.</p>
+
+        <h2>6. Internet Permissions &amp; Analytics</h2>
+        <p>The app may use standard internet permissions for non-intrusive purposes such as linking to external
+            resources or anonymous crash reporting to help us identify bugs and improve the app. No personally
+            identifiable information (PII) is ever linked to these activities.</p>
+
+        <h2>7. Children's Privacy</h2>
+        <p>This app is not directed at children under the age of 13. We do not knowingly collect any personal
             information from children under 13.</p>
 
-        <h2>6. Changes to This Privacy Policy</h2>
-        <p>We may update our Privacy Policy periodically. We will notify you of any changes by posting the new Privacy
-            Policy here. We advise you to review this page periodically for any changes. Changes are effective
-            immediately after they are posted on this page.</p>
+        <h2>8. Changes to This Privacy Policy</h2>
+        <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an
+            updated effective date. We encourage you to review this page periodically. Changes take effect
+            immediately upon posting.</p>
 
         <div class="contact-box">
-            <h2>7. Contact Us</h2>
-            <p>If you have any questions, suggestions, or concerns regarding our Privacy Policy, please feel free to
-                reach out:</p>
+            <h2>9. Contact Us</h2>
+            <p>If you have any questions or concerns about this Privacy Policy, please feel free to reach out:</p>
             <p>Email: <a href="mailto:govindsingh4850@gmail.com">govindsingh4850@gmail.com</a></p>
         </div>
     </div>
 
 </body>
-
 
 </html>
