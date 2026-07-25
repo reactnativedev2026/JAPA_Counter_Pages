@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parihar Tech — Software Consultancy &amp; Support</title>
+<meta name="description" content="Parihar Tech is a Udyam-registered software consultancy based in Mandsaur, Madhya Pradesh, building and supporting software for small businesses.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12172B;
+    --ink-2:#1B2140;
+    --card:#1D2340;
+    --paper:#F6F1E6;
+    --paper-dim:#E9E1D0;
+    --amber:#F2A83B;
+    --amber-dim:#c98a2b;
+    --teal:#2FBBA8;
+    --slate:#9AA2BC;
+    --hairline:rgba(246,241,230,0.14);
+    --radius:2px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
+
+  ::selection{background:var(--amber); color:var(--ink);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(18,23,43,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--hairline);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 0;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.25rem;
+    letter-spacing:0.01em;
+  }
+  .logo span{color:var(--amber);}
+  nav ul{
+    list-style:none; display:flex; gap:32px;
+    font-size:0.92rem; color:var(--slate);
+  }
+  nav ul a{text-decoration:none; transition:color 0.2s;}
+  nav ul a:hover, nav ul a:focus-visible{color:var(--paper);}
+  .nav-cta{
+    display:inline-block;
+    border:1px solid var(--amber);
+    color:var(--amber);
+    padding:8px 18px;
+    font-size:0.85rem;
+    text-decoration:none;
+    border-radius:var(--radius);
+    transition:background 0.2s, color 0.2s;
+  }
+  .nav-cta:hover, .nav-cta:focus-visible{background:var(--amber); color:var(--ink);}
+  .navlinks-mobile{display:none;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:88px 0 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; top:-40%; right:-15%;
+    width:640px; height:640px;
+    background:radial-gradient(circle, rgba(47,187,168,0.16) 0%, rgba(47,187,168,0) 70%);
+    pointer-events:none;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    color:var(--teal);
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{
+    content:""; width:22px; height:1px; background:var(--teal);
+  }
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:clamp(2.5rem, 6vw, 4.4rem);
+    line-height:1.03;
+    margin:22px 0 24px;
+    max-width:14ch;
+  }
+  h1 em{
+    font-style:italic; font-weight:300; color:var(--amber);
+  }
+  .hero-sub{
+    max-width:52ch;
+    font-size:1.08rem;
+    color:var(--slate);
+    margin-bottom:36px;
+  }
+  .hero-actions{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:56px;}
+  .btn-primary{
+    background:var(--amber);
+    color:var(--ink);
+    padding:14px 26px;
+    font-weight:600;
+    font-size:0.95rem;
+    text-decoration:none;
+    border-radius:var(--radius);
+    transition:transform 0.15s, background 0.2s;
+    display:inline-block;
+  }
+  .btn-primary:hover, .btn-primary:focus-visible{background:#ffbf5c; transform:translateY(-1px);}
+  .btn-ghost{
+    border:1px solid var(--hairline);
+    color:var(--paper);
+    padding:14px 26px;
+    font-size:0.95rem;
+    text-decoration:none;
+    border-radius:var(--radius);
+    transition:border-color 0.2s;
+  }
+  .btn-ghost:hover, .btn-ghost:focus-visible{border-color:var(--paper);}
+
+  /* Registration manifest strip — signature element */
+  .manifest{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.82rem;
+    background:var(--card);
+    border:1px solid var(--hairline);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .manifest-head{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:12px 20px;
+    border-bottom:1px dashed var(--hairline);
+    color:var(--slate);
+    letter-spacing:0.04em;
+  }
+  .manifest-head .status{color:var(--teal);}
+  .manifest-head .status::before{content:"● "; }
+  .manifest-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+  }
+  .manifest-grid div{
+    padding:16px 20px;
+    border-right:1px solid var(--hairline);
+  }
+  .manifest-grid div:last-child{border-right:none;}
+  .manifest-grid .label{
+    display:block; color:var(--slate); font-size:0.72rem;
+    text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;
+  }
+  .manifest-grid .val{color:var(--paper); font-size:0.88rem;}
+
+  @media (max-width:720px){
+    .manifest-grid{grid-template-columns:repeat(2, 1fr);}
+    .manifest-grid div{border-bottom:1px solid var(--hairline);}
+  }
+
+  /* ---------- Section shared ---------- */
+  section{padding:80px 0;}
+  .section-head{margin-bottom:48px; max-width:60ch;}
+  .kicker{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem; color:var(--teal);
+    text-transform:uppercase; letter-spacing:0.12em;
+    margin-bottom:14px;
+  }
+  h2{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:clamp(1.8rem, 3.4vw, 2.5rem);
+    margin-bottom:14px;
+  }
+  .section-head p{color:var(--slate); font-size:1.02rem;}
+
+  /* ---------- Services (as service manifest / code cards) ---------- */
+  .services{background:var(--ink-2); border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline);}
+  .service-list{display:flex; flex-direction:column; border-top:1px solid var(--hairline);}
+  .service-row{
+    display:grid;
+    grid-template-columns:110px 1fr 1fr;
+    gap:24px;
+    padding:28px 0;
+    border-bottom:1px solid var(--hairline);
+    align-items:start;
+  }
+  .service-row .code{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--amber);
+    font-size:0.85rem;
+    padding-top:4px;
+  }
+  .service-row h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.3rem;
+  }
+  .service-row p{color:var(--slate); font-size:0.96rem;}
+  @media (max-width:720px){
+    .service-row{grid-template-columns:1fr; gap:8px;}
+  }
+
+  /* ---------- About ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:56px;
+    align-items:start;
+  }
+  .about-grid p{color:var(--slate); margin-bottom:18px; max-width:56ch;}
+  .about-grid p strong{color:var(--paper); font-weight:500;}
+  .credential-card{
+    background:var(--card);
+    border:1px solid var(--hairline);
+    border-radius:var(--radius);
+    padding:28px;
+  }
+  .credential-card .cc-title{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.75rem;
+    color:var(--slate);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    margin-bottom:18px;
+    display:flex; justify-content:space-between;
+  }
+  .credential-row{
+    display:flex; justify-content:space-between;
+    padding:11px 0;
+    border-bottom:1px solid var(--hairline);
+    font-size:0.9rem;
+  }
+  .credential-row:last-child{border-bottom:none;}
+  .credential-row .k{color:var(--slate);}
+  .credential-row .v{color:var(--paper); font-family:'JetBrains Mono', monospace; font-size:0.84rem; text-align:right;}
+  @media (max-width:820px){
+    .about-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Contact ---------- */
+  .contact{background:var(--paper); color:var(--ink);}
+  .contact .kicker{color:var(--amber-dim);}
+  .contact h2{color:var(--ink);}
+  .contact .section-head p{color:#5C5744;}
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+  }
+  .contact-card{
+    background:#FFFFFF;
+    border:1px solid var(--paper-dim);
+    padding:28px;
+    border-radius:var(--radius);
+  }
+  .contact-card h3{
+    font-family:'Fraunces', serif; font-size:1.15rem; margin-bottom:14px;
+  }
+  .contact-card ul{list-style:none;}
+  .contact-card li{
+    padding:9px 0; border-bottom:1px solid var(--paper-dim);
+    font-size:0.92rem; display:flex; justify-content:space-between; gap:16px;
+  }
+  .contact-card li:last-child{border-bottom:none;}
+  .contact-card li .k{color:#8A8368; font-size:0.82rem;}
+  .contact-card li a{text-decoration:none; color:var(--ink); font-weight:500;}
+  @media (max-width:820px){.contact-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding:36px 0;
+    border-top:1px solid var(--hairline);
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:16px;
+    font-size:0.82rem; color:var(--slate);
+  }
+  footer a{text-decoration:none; color:var(--slate); transition:color 0.2s;}
+  footer a:hover, footer a:focus-visible{color:var(--paper);}
+  footer .flinks{display:flex; gap:22px;}
+
+  :focus-visible{outline:2px solid var(--amber); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="logo">Parihar<span>.</span>Tech</div>
+      <ul class="navlinks-desktop" style="display:flex;">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="nav-cta" href="#contact">Get in touch</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Mandsaur, Madhya Pradesh · Est. 2021</p>
+      <h1>Software built by people who <em>answer the phone.</em></h1>
+      <p class="hero-sub">Parihar Tech is a small, Udyam-registered consultancy providing custom software development and dependable support to businesses across Madhya Pradesh — no call centre, no hand-offs, just the people who wrote the code.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#contact">Start a conversation</a>
+        <a class="btn-ghost" href="#services">See what we do</a>
+      </div>
+
+      <div class="manifest">
+        <div class="manifest-head">
+          <span>udyam_registration.cert</span>
+          <span class="status">verified · active</span>
+        </div>
+        <div class="manifest-grid">
+          <div>
+            <span class="label">Registration No.</span>
+            <span class="val">UDYAM-MP-30-0070031</span>
+          </div>
+          <div>
+            <span class="label">Enterprise Type</span>
+            <span class="val">Micro</span>
+          </div>
+          <div>
+            <span class="label">Classification</span>
+            <span class="val">2026-27</span>
+          </div>
+          <div>
+            <span class="label">Est. Operations</span>
+            <span class="val">08 Jan 2021</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">What we do</p>
+        <h2>Three services, done properly</h2>
+        <p>Everything we offer traces back to our official NIC activity classification — we don't stray outside what we're actually good at.</p>
+      </div>
+
+      <div class="service-list">
+        <div class="service-row">
+          <div class="code">NIC 62</div>
+          <h3>Custom software development</h3>
+          <p>Web and desktop applications built around how your business already works — inventory tools, billing systems, internal dashboards, and everything in between.</p>
+        </div>
+        <div class="service-row">
+          <div class="code">NIC 6201</div>
+          <h3>Technology consulting</h3>
+          <p>Before you buy or build anything, we help you work out what you actually need: architecture reviews, vendor selection, and honest scoping.</p>
+        </div>
+        <div class="service-row">
+          <div class="code">NIC 62013</div>
+          <h3>Ongoing support &amp; maintenance</h3>
+          <p>Software doesn't end at launch. We keep client systems patched, monitored, and running — with a real person to call when something breaks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div>
+          <p class="kicker">About</p>
+          <h2>A registered Micro enterprise, run on trust</h2>
+          <p><strong>Parihar Tech</strong> is founded and run by Govind Singh out of Kundla Hujurg, Mandsaur — a small operation by design. We work directly with a limited number of clients at a time, which means every project gets full attention rather than being queued behind a dozen others.</p>
+          <p>We're registered with the Ministry of Micro, Small and Medium Enterprises under the Udyam scheme, which means our business is verified against government records — not just a claim on a website.</p>
+        </div>
+        <div class="credential-card">
+          <div class="cc-title">
+            <span>enterprise_profile</span>
+            <span>OBC · Trading &amp; Services</span>
+          </div>
+          <div class="credential-row"><span class="k">Legal name</span><span class="v">Parihar Tech</span></div>
+          <div class="credential-row"><span class="k">Proprietor</span><span class="v">Govind Singh</span></div>
+          <div class="credential-row"><span class="k">Unit</span><span class="v">Parihar Tech</span></div>
+          <div class="credential-row"><span class="k">District</span><span class="v">Mandsaur, MP</span></div>
+          <div class="credential-row"><span class="k">PIN</span><span class="v">458883</span></div>
+          <div class="credential-row"><span class="k">Registered since</span><span class="v">06 May 2026</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Contact</p>
+        <h2>Talk to us directly</h2>
+        <p>No forms that vanish into a queue — write or call, and you'll hear back from someone who can actually help.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Reach us</h3>
+          <ul>
+            <li><span class="k">Phone</span><a href="tel:+919926614850">+91 99266 14850</a></li>
+            <li><span class="k">Email</span><a href="mailto:govindsingh4850@gmail.com">govindsingh4850@gmail.com</a></li>
+            <li><span class="k">Hours</span><span>Mon–Sat, 10:00–18:00 IST</span></li>
+          </ul>
+        </div>
+        <div class="contact-card">
+          <h3>Registered office</h3>
+          <ul>
+            <li><span class="k">Address</span><span style="text-align:right">Kundla Hujurg, Garoth,<br>Melkheda Road, Mandsaur</span></li>
+            <li><span class="k">State</span><span>Madhya Pradesh</span></li>
+            <li><span class="k">PIN</span><span>458883</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; width:100%;">
+    <span>© 2026 Parihar Tech. Udyam Reg. No. UDYAM-MP-30-0070031.</span>
+    <span class="flinks">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="mailto:govindsingh4850@gmail.com">Contact</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>
