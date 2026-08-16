@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.parihartech.japa_sadhna_counter",
+      "sha256_cert_fingerprints": [
+        "2D:13:89:BF:65:3B:45:E3:76:AE:32:5B:FE:5F:52:81:FB:C2:C3:C0:29:A8:AE:1F:C0:28:F6:D6:B1:EE:49:2D"
+      ]
+    }
+  }
+]
