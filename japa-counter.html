@@ -593,10 +593,34 @@
     <script>
         const PLAYSTORE_URL = "https://play.google.com/store/apps/details?id=com.parihartech.japa_sadhna_counter";
 
-        // Full page click → Play Store — no blink, no ripple
+        // 1. URL से path/content पैरामीटर निकालें
+        const urlParams = new URLSearchParams(window.location.search);
+        const path = urlParams.get('path') || urlParams.get('content') || '';
+        
+        // 2. Referrer के साथ final Play Store URL बनाएं
+        const finalRedirectUrl = path 
+            ? `${PLAYSTORE_URL}&referrer=${encodeURIComponent('path=' + path)}` 
+            : PLAYSTORE_URL;
+
+        // 3. अगर 'path' मौजूद है, तो तुरंत Play Store पर भेजें
+        if (path) {
+            window.location.href = finalRedirectUrl;
+        }
+
+        // 4. पेज के सभी Play Store लिंक्स को अपडेट करें ताकि उनमें भी Referrer पास हो
+        function updatePlayStoreLinks() {
+            if (path) {
+                const links = document.querySelectorAll('a[href*="play.google.com"]');
+                links.forEach(link => {
+                    link.setAttribute('href', finalRedirectUrl);
+                });
+            }
+        }
+
+        // Full page click → Play Store
         document.body.addEventListener('click', function(e) {
             if (e.target.closest('a, button')) return;
-            window.open(PLAYSTORE_URL, '_blank');
+            window.open(finalRedirectUrl, '_blank');
         });
 
         // Catalog render
@@ -620,6 +644,7 @@
         ];
 
         function renderComponents() {
+            updatePlayStoreLinks();
             const grid = document.getElementById('seo-catalog-grid');
             grid.innerHTML = CATALOG_DATABASE.map(cat => `
                 <div class="feature-card">
