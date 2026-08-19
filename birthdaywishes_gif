@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Wishes GIF — Wish out loud, in motion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #241536;
+    --bg-alt: #2F1B47;
+    --panel: #34204C;
+    --pink: #FF5D8F;
+    --gold: #FFC15E;
+    --text: #F5EFFF;
+    --muted: #C7B4E3;
+    --line: rgba(245,239,255,0.12);
+    --radius: 22px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(circle at 12% 8%, rgba(255,93,143,0.16), transparent 40%),
+      radial-gradient(circle at 88% 14%, rgba(255,193,94,0.14), transparent 45%),
+      var(--bg);
+    color:var(--text);
+    font-family:'Manrope', sans-serif;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3, .display{ font-family:'Baloo 2', sans-serif; }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1160px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- confetti ambient ---------- */
+  .confetti{position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden;}
+  .confetti span{
+    position:absolute; top:-40px; border-radius:3px; opacity:0.55;
+    animation: fall linear infinite;
+  }
+  @keyframes fall{
+    to{ transform: translateY(110vh) rotate(360deg); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .confetti span{ animation:none; display:none; }
+  }
+
+  /* ---------- nav ---------- */
+  header{
+    position:sticky; top:0; z-index:20;
+    backdrop-filter: blur(10px);
+    background: rgba(36,21,54,0.72);
+    border-bottom:1px solid var(--line);
+  }
+  nav{ display:flex; align-items:center; justify-content:space-between; padding:18px 0;}
+  .brand{ display:flex; align-items:center; gap:10px; font-family:'Baloo 2'; font-weight:700; font-size:1.15rem;}
+  .brand-mark{
+    width:34px; height:34px; border-radius:10px;
+    background: linear-gradient(135deg, var(--pink), var(--gold));
+    display:flex; align-items:center; justify-content:center; font-size:18px;
+    box-shadow: 0 6px 16px rgba(255,93,143,0.35);
+  }
+  .nav-links{ display:flex; gap:28px; font-size:0.92rem; color:var(--muted); }
+  .nav-links a:hover{ color:var(--text); }
+  .nav-cta{
+    background:var(--gold); color:#2A1735; font-weight:700; padding:10px 18px;
+    border-radius:999px; font-size:0.9rem;
+  }
+  @media (max-width:720px){ .nav-links{display:none;} }
+
+  /* ---------- hero ---------- */
+  .hero{ position:relative; z-index:1; padding:76px 0 60px; }
+  .hero-grid{ display:grid; grid-template-columns:1.05fr 0.95fr; gap:48px; align-items:center;}
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr;} }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:0.82rem; letter-spacing:0.06em; color:var(--gold);
+    background:rgba(255,193,94,0.1); border:1px solid rgba(255,193,94,0.3);
+    padding:7px 14px; border-radius:999px; margin-bottom:20px; font-weight:600;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5vw, 3.7rem); line-height:1.06; font-weight:800;
+    letter-spacing:-0.01em;
+  }
+  .hero h1 .accent{ color:var(--pink); }
+  .hero p.lede{
+    margin-top:22px; font-size:1.12rem; color:var(--muted); max-width:480px; line-height:1.6;
+  }
+  .hero-ctas{ display:flex; gap:14px; margin-top:32px; flex-wrap:wrap; }
+  .btn-primary, .btn-ghost{
+    padding:14px 24px; border-radius:14px; font-weight:700; font-size:0.98rem;
+    display:inline-flex; align-items:center; gap:10px;
+  }
+  .btn-primary{
+    background: linear-gradient(135deg, var(--pink), #FF8A65);
+    color:#fff; box-shadow:0 12px 30px rgba(255,93,143,0.35);
+  }
+  .btn-ghost{ border:1px solid var(--line); color:var(--text); }
+  .btn-primary:hover{ transform:translateY(-2px); }
+  .rating-row{ display:flex; align-items:center; gap:10px; margin-top:26px; color:var(--muted); font-size:0.9rem;}
+  .stars{ color:var(--gold); letter-spacing:2px; }
+
+  /* ---------- signature: fanned GIF card stack ---------- */
+  .fan{
+    position:relative; height:420px; display:flex; align-items:center; justify-content:center;
+  }
+  .fan-card{
+    position:absolute; width:190px; height:250px; border-radius:20px;
+    padding:16px; display:flex; flex-direction:column; justify-content:space-between;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+    border:1px solid rgba(255,255,255,0.12);
+    animation: sway 6s ease-in-out infinite;
+  }
+  .fan-card .tag{ font-size:0.78rem; font-weight:700; opacity:0.85; }
+  .fan-card .glyph{ font-size:2.6rem; align-self:center; }
+  .fan-card .cap{ font-family:'Baloo 2'; font-weight:700; font-size:1.05rem; }
+  .fan-card:nth-child(1){ background:linear-gradient(160deg,#FF5D8F,#B33D68); transform:rotate(-14deg) translate(-92px,10px); z-index:1; animation-delay:0s;}
+  .fan-card:nth-child(2){ background:linear-gradient(160deg,#7B4B94,#4B2A63); transform:rotate(-3deg) translate(0,-14px); z-index:3; animation-delay:0.4s;}
+  .fan-card:nth-child(3){ background:linear-gradient(160deg,#FFC15E,#E08A2B); color:#2A1735; transform:rotate(11deg) translate(92px,10px); z-index:2; animation-delay:0.8s;}
+  @keyframes sway{
+    0%,100%{ translate: 0 0; } 50%{ translate: 0 -8px; }
+  }
+  @media (prefers-reduced-motion: reduce){ .fan-card{ animation:none; } }
+  @media (max-width:900px){ .fan{ height:340px; } .fan-card{ width:150px; height:200px; } }
+
+  /* ---------- section shell ---------- */
+  section{ position:relative; z-index:1; padding:80px 0; }
+  .section-head{ max-width:620px; margin-bottom:44px; }
+  .kicker{ color:var(--pink); font-weight:700; font-size:0.85rem; letter-spacing:0.08em; text-transform:uppercase; }
+  .section-head h2{ font-size:clamp(1.8rem,3.4vw,2.5rem); margin-top:10px; font-weight:700; }
+  .section-head p{ color:var(--muted); margin-top:14px; line-height:1.6; }
+
+  /* ---------- features bento ---------- */
+  .bento{ display:grid; grid-template-columns:repeat(4, 1fr); grid-auto-rows:170px; gap:18px; }
+  .bento .card{
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:24px; display:flex; flex-direction:column; justify-content:space-between;
+    transition: border-color .2s, transform .2s;
+  }
+  .bento .card:hover{ border-color:rgba(255,93,143,0.4); transform:translateY(-3px); }
+  .bento .card .icon{ font-size:1.6rem; }
+  .bento .card h3{ font-size:1.05rem; font-weight:600; }
+  .bento .card p{ color:var(--muted); font-size:0.87rem; line-height:1.5; }
+  .b1{ grid-column:span 2; grid-row:span 2; }
+  .b2{ grid-column:span 2; }
+  .b3{ grid-column:span 1; }
+  .b4{ grid-column:span 1; }
+  .b5{ grid-column:span 2; }
+  @media (max-width:900px){
+    .bento{ grid-template-columns:repeat(2,1fr); grid-auto-rows:auto;}
+    .b1,.b2,.b3,.b4,.b5{ grid-column:span 2; grid-row:auto; }
+  }
+
+  /* ---------- how it works ---------- */
+  .steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; counter-reset:step; }
+  @media (max-width:900px){ .steps{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:520px){ .steps{ grid-template-columns:1fr; } }
+  .step{ position:relative; padding-top:6px; }
+  .step .num{
+    font-family:'Baloo 2'; font-weight:800; font-size:2.4rem;
+    background:linear-gradient(135deg,var(--pink),var(--gold));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    line-height:1;
+  }
+  .step h3{ margin-top:10px; font-size:1.05rem; font-weight:700; }
+  .step p{ color:var(--muted); font-size:0.87rem; margin-top:6px; line-height:1.5; }
+  .step:not(:last-child)::after{
+    content:''; position:absolute; top:22px; right:-14px; width:24px; height:2px;
+    background:repeating-linear-gradient(90deg, var(--muted) 0 6px, transparent 6px 10px);
+    opacity:0.5;
+  }
+  @media (max-width:900px){ .step::after{ display:none; } }
+
+  /* ---------- who it's for ---------- */
+  .chips{ display:flex; flex-wrap:wrap; gap:12px; }
+  .chip{
+    background:var(--panel); border:1px solid var(--line); padding:12px 20px;
+    border-radius:999px; font-size:0.92rem; display:flex; align-items:center; gap:8px;
+  }
+
+  /* ---------- CTA footer ---------- */
+  .cta-panel{
+    background: linear-gradient(135deg, #3A2153, #4A2A63 60%, #5A2D5B);
+    border-radius:32px; padding:64px 44px; text-align:center; position:relative; overflow:hidden;
+    border:1px solid rgba(255,255,255,0.08);
+  }
+  .cta-panel h2{ font-size:clamp(1.9rem,4vw,2.6rem); }
+  .cta-panel p{ color:var(--muted); margin-top:14px; max-width:460px; margin-inline:auto; }
+  .cta-panel .hero-ctas{ justify-content:center; margin-top:30px; }
+  .play-badge{
+    display:inline-flex; align-items:center; gap:10px; background:#000; color:#fff;
+    padding:12px 20px; border-radius:12px; font-weight:600; border:1px solid rgba(255,255,255,0.2);
+  }
+  .play-badge .glyph{ font-size:1.4rem; }
+  .play-badge small{ display:block; font-weight:400; font-size:0.7rem; opacity:0.75; }
+
+  footer{ padding:36px 0 60px; text-align:center; color:var(--muted); font-size:0.85rem; }
+  footer a{ color:var(--gold); }
+</style>
+</head>
+<body>
+
+<div class="confetti" id="confetti"></div>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="brand"><span class="brand-mark">🎂</span> Happy Birthday Wishes GIF</div>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how">Kaise kaam kare</a>
+        <a href="#for">Kiske liye</a>
+        <a href="#info">App info</a>
+      </div>
+      <a class="nav-cta" href="https://play.google.com/store/apps/details?id=com.happy_birthday_wishes_gif" target="_blank" rel="noopener">Install Free</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">🆕 Naya launch · by Parihar Tech</span>
+        <h1>Wish nahi, <span class="accent">bhejo</span> — <br>animated mein.</h1>
+        <p class="lede">Naam likho, GIF choose karo, style karo apni marzi se — aur bhej do bas ek tap mein. Har birthday ko banaao thoda zyada special.</p>
+        <div class="hero-ctas">
+          <a class="btn-primary" href="https://play.google.com/store/apps/details?id=com.happy_birthday_wishes_gif" target="_blank" rel="noopener">▶ Get it on Google Play</a>
+          <a class="btn-ghost" href="#features">Features dekho</a>
+        </div>
+        <div class="rating-row">
+          <span>Version 1.0.5 · 51 MB · Android 7.0+ · Rated for 3+</span>
+        </div>
+      </div>
+
+      <div class="fan" aria-hidden="true">
+        <div class="fan-card">
+          <span class="tag">TO: SIS</span>
+          <span class="glyph">🎈</span>
+          <span class="cap">Happy Birthday Didi!</span>
+        </div>
+        <div class="fan-card">
+          <span class="tag">TO: BESTIE</span>
+          <span class="glyph">🎂</span>
+          <span class="cap">Party time!</span>
+        </div>
+        <div class="fan-card">
+          <span class="tag">TO: MOM</span>
+          <span class="glyph">💐</span>
+          <span class="cap">Love you Maa</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Features</span>
+        <h2>Ek GIF mein sab kuch fit</h2>
+        <p>Library se lekar personalize karne tak — puri process app ke andar hi, chutki mein.</p>
+      </div>
+      <div class="bento">
+        <div class="card b1">
+          <div class="icon">🗂️</div>
+          <div>
+            <h3>Massive GIF collection</h3>
+            <p>Naya aur trending birthday GIFs ka bada collection, unique tabs mein organised — jo dhundo turant milega.</p>
+          </div>
+        </div>
+        <div class="card b2">
+          <div class="icon">✍️</div>
+          <div>
+            <h3>Naam ya message add karo</h3>
+            <p>Kisi bhi GIF ya image par personal naam ya short line likho — birthday wale insaan ko lage ki yeh sirf unke liye bana hai.</p>
+          </div>
+        </div>
+        <div class="card b3">
+          <div class="icon">🎨</div>
+          <div>
+            <h3>Full style control</h3>
+            <p>Color, font, gradient, shadow, opacity, spacing, aur 3D rotation.</p>
+          </div>
+        </div>
+        <div class="card b4">
+          <div class="icon">📤</div>
+          <div>
+            <h3>Ek tap share</h3>
+            <p>Seedha WhatsApp, Instagram ya kisi bhi social app par bhejo.</p>
+          </div>
+        </div>
+        <div class="card b5">
+          <div class="icon">⚡</div>
+          <div>
+            <h3>Halka aur tez</h3>
+            <p>99% devices ke saath compatible, kam data mein bhi smooth chalta hai — istemal karna bilkul aasan.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">4 steps</span>
+        <h2>Kaise banayein apna GIF</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="num">01</div>
+          <h3>Start karo</h3>
+          <p>App kholo aur "Start" par tap karke naya GIF banana shuru karo.</p>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <h3>GIF choose karo</h3>
+          <p>Collection se apna pasandida birthday GIF select karo.</p>
+        </div>
+        <div class="step">
+          <div class="num">03</div>
+          <h3>Personalize karo</h3>
+          <p>Naam ya short message likho, aur color, font, 3D rotation se style karo.</p>
+        </div>
+        <div class="step">
+          <div class="num">04</div>
+          <h3>Save & Share</h3>
+          <p>Save button dabao aur seedha apne loved ones ko bhej do.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="for">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Kiske liye</span>
+        <h2>Har rishte ke liye sahi wish</h2>
+        <p>Family ho, dost ho ya partner — sabke liye alag tarah ke GIFs.</p>
+      </div>
+      <div class="chips">
+        <div class="chip">👧 Sister</div>
+        <div class="chip">🧑 Brother</div>
+        <div class="chip">👩 Mom</div>
+        <div class="chip">👨 Dad</div>
+        <div class="chip">🤝 Best Friend</div>
+        <div class="chip">💑 Husband / Wife</div>
+        <div class="chip">💌 Boyfriend / Girlfriend</div>
+        <div class="chip">👶 Cousins</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="info">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">App info</span>
+        <h2>Play Store par jaisa hai, waisa hi</h2>
+      </div>
+      <div class="chips">
+        <div class="chip">🏷️ Version 1.0.5</div>
+        <div class="chip">📅 Updated 19 Aug 2026</div>
+        <div class="chip">🚀 Released 18 Aug 2026</div>
+        <div class="chip">🤖 Android 7.0 and up</div>
+        <div class="chip">📦 51 MB download</div>
+        <div class="chip">🔞 Rated for 3+</div>
+        <div class="chip">🏢 Offered by Parihar Tech</div>
+        <div class="chip">⬇️ 0+ downloads — abhi-abhi launch hui hai</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cta-panel">
+        <h2>Agla birthday, animated bana do 🎉</h2>
+        <p>Naya-naya launch hua hai — sabse pehle install karne walon mein bano. Free download karo aur apna pehla personalized GIF abhi banao.</p>
+        <div class="hero-ctas">
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.happy_birthday_wishes_gif" target="_blank" rel="noopener">
+            <span class="glyph">▶</span>
+            <span>GET IT ON<small>Google Play</small></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    Happy Birthday Wishes GIF — by Parihar Tech — <a href="https://play.google.com/store/apps/details?id=com.happy_birthday_wishes_gif" target="_blank" rel="noopener">Play Store par dekhein</a>
+  </div>
+</footer>
+
+<script>
+  // ambient confetti
+  const colors = ['#FF5D8F', '#FFC15E', '#7B4B94', '#F5EFFF'];
+  const holder = document.getElementById('confetti');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduce){
+    for(let i=0;i<24;i++){
+      const s = document.createElement('span');
+      const size = 6 + Math.random()*7;
+      s.style.left = Math.random()*100 + 'vw';
+      s.style.width = size + 'px';
+      s.style.height = size*0.4 + 'px';
+      s.style.background = colors[i % colors.length];
+      s.style.animationDuration = (8 + Math.random()*10) + 's';
+      s.style.animationDelay = (Math.random()*10) + 's';
+      holder.appendChild(s);
+    }
+  }
+</script>
+
+</body>
+</html>
