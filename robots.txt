@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://reactnativedev2026.github.io/JAPA_Counter_Pages/sitemap.xml
